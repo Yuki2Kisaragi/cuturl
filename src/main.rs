@@ -1,15 +1,14 @@
 use regex::Regex;
-use std::io;
-use std::io::{stdout, Write};
+use std::io::{stdin, stdout, Write};
 
 fn main() {
     let re = Regex::new(r"^https://www.amazon.co.jp/dp/[A-Z0-9]+/").unwrap();
 
     let mut insert_url = String::new();
     print!("Please input amazon_url : ");
-    io::stdout().flush().unwrap();
+    stdout().flush().unwrap();
 
-    io::stdin()
+    stdin()
         .read_line(&mut insert_url)
         .expect("Failed to read url ...");
 

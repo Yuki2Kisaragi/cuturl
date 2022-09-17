@@ -1,8 +1,25 @@
+use clap::Parser;
 use lazy_static::lazy_static;
 use regex::Regex;
 use std::io::{stdin, stdout, Write};
 
+#[derive(Parser)]
+#[clap(
+    name = "cuturl",
+    author = "yuki2Kisaragi",
+    version = "v1.0.0",
+    about = "Cut Amazon Product's URL"
+)]
+struct Args {
+    /// Reads the product URL in the file and converts the URL in a separate file
+    #[clap(short, long)]
+    file_mode: bool,
+}
+
 fn main() {
+    let args = Args::parse();
+    println!("mode : {:?}", args.file_mode);
+
     let mut insert_url = String::new();
     print!("Please input amazon_url : ");
     stdout().flush().unwrap();

@@ -9,3 +9,4 @@ edition = "2021"
 regex = "1"
 lazy_static = "1.4.0"
 clap = {version = "3.2.22", features = ["derive"]}
+anyhow = "1.0.66"

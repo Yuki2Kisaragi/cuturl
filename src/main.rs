@@ -1,8 +1,10 @@
 use anyhow::{Context, Result};
 use clap::Parser;
-use lazy_static::lazy_static;
+use once_cell::sync::Lazy;
 use regex::Regex;
 use std::io::{stdin, stdout, Write};
+
+static RE: Lazy<Regex> = Lazy::new(|| Regex::new(r"[A-Z0-9]{5,}").unwrap());
 
 #[derive(Parser)]
 #[clap(
@@ -18,8 +20,7 @@ struct Args {
 }
 
 fn main() {
-    let args = Args::parse();
-    println!("mode : {:?}", args.file_mode);
+    let _args = Args::parse();
 
     let mut insert_url = String::new();
     print!("Please input amazon_url : ");
@@ -34,10 +35,6 @@ fn main() {
 }
 
 fn convert_url(str_text: &str) -> Result<String> {
-    lazy_static! {
-        static ref RE: Regex = Regex::new(r"[A-Z0-9]{5,}").unwrap();
-    }
-
     let amazon_url = "https://www.amazon.co.jp/gp/product/".to_string();
     let caps = RE
         .captures(str_text)

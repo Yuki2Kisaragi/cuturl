@@ -1,4 +1,4 @@
-# Rusty CLI Application Tool: cuturl(Shorten Amazon URL)
+# (WIP)Rusty CLI Application Tool: cuturl(Shorten Amazon URL)
 
 ## Summary
 
